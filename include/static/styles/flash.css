@@ -1,0 +1,64 @@
+.alert {
+    padding:10px;
+    margin-bottom: 3px;
+}
+
+.close {
+    float: right;
+    border-style: none;
+    cursor: pointer;
+}
+
+.alert-danger {
+    background-color: #ffd3d3;
+    color: #c73636;
+}
+
+.close-danger {
+    color: #c73636;
+    background-color: #ffd3d3;
+}
+
+.alert-success {
+    background-color: #d0ffa0;
+    color: #44701a;
+}
+
+.close-success {
+    color: #44701a;
+    background-color: #d0ffa0;
+}
+
+.alert-warning {
+    background-color: rgb(255 245 173);
+    color: rgb(165 125 0);
+}
+
+.close-warning {
+    background-color: rgb(255 245 173);
+    color: rgb(165 125 0);
+}
+
+.alert-primary {
+    background-color: #e1dfff;
+    color: #6666ff;
+}
+
+.close-primary {
+    background-color: #e1dfff;
+    color: #6666ff;
+}
+
+.alert-light {
+    background-color: #f3f3f3;
+    color: grey;
+}
+
+.close-light {
+    background-color: #f3f3f3;
+    color: grey;
+}
+
+.is-invalid {
+    border: 1px solid #ff4444 !important;
+}

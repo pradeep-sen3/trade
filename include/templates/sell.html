@@ -1,0 +1,72 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+sell
+{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/forms.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/color_scheme.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/certificate.css') }}">
+{% endblock %}
+
+{% block body %}
+  <form method="post" action="">
+    <!-- This line is adding something called 'cross site request forgery token' -->
+    {{ form.hidden_tag() }} 
+
+    <div class="total-center">
+
+      <div class="fields form">
+
+        <div class="stock-logo">
+          <div class="brnd-logo">
+            <img src="{{ stock_info['logo']['url'] }}" alt="">
+          </div>
+        </div>
+
+        <div>            
+            <div class="stock-info">
+              <h2>{{ stock_info['company']['companyName'] }}</h2>
+            </div>
+
+            <div class="stock-info">
+              <h3>Exchange: {{ stock_info['company']['exchange'] }}</h3>
+            </div>
+
+            <div class="stock-info">
+              <h3 id="price">Price: {{ stock_info['quote']['latestPrice'] }}</h3>
+            </div>
+
+            <div class="stock-info">
+              <h3 id="total">Total: {{ stock_info['quote']['latestPrice'] }}</h3>
+            </div>
+
+            <div class="stock-info">
+              <h3>Currency: {{ stock_info['quote']['currency'] }}</h3>
+            </div>
+
+            <div class="field">
+              <p class="gen-txt">Shares</p>
+              <div class="input">
+                <div class="input-icn total-center">
+                  <img src="{{ url_for('static', filename='/assets/icons8-stock-share-96.png') }}" alt="">
+                </div>
+                {% if form.shares.errors %}
+                  {{ form.shares(placeholder ='shares...', class='is-invalid', id = 'shares-input', autocomplete = 'off') }}
+                {% else %}
+                  {{ form.shares(placeholder ='shares...', id = 'shares-input', autocomplete = 'off') }}
+                {% endif %}
+              </div>
+            </div>
+
+            {{ form.submit(class = 'submit-btn right danger danger-border danger-txt danger-highlight') }}
+            <a href="/index"><button id="cancel"  value="cancel" class="submit-btn right info info-border info-txt info-highlight">Cancel</button></a>
+          </div>
+      </div>
+
+    </div>
+  </form>
+
+<script src="{{ url_for('static', filename='/scripts/update_total.js') }}"></script>
+{% endblock %}

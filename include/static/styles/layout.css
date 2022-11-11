@@ -1,0 +1,138 @@
+/*
+Styles common to every html element.
+*/
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: monospace;
+    color: #333333;
+}
+
+.seperator {
+    padding-top: 84px;
+}
+
+/*
+Styling the navigation bar. 
+*/
+.navbar {
+    display: flex;
+    background-color: #f5f5f5;
+    border-bottom: 1px solid #d8d8d8;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+.menu-links {
+    display: flex;
+    justify-content: space-between;
+    flex-grow: 1; /* Make this div occupy all the remaining space inside the parent div. */
+}
+
+.stock-actions, .user-actions {
+    display: flex;
+}
+
+#logo {
+    display: flex;
+}
+
+.company-name {
+    cursor: pointer;
+    margin: 30px 15px;
+    margin-left: 5px;
+}
+
+.menu-links a {
+    font-size: 1.3em;
+    text-decoration: none;
+    display: inline-block;
+    margin: 30px 15px;
+    color: #858383;
+    border-bottom: 1px solid #f3f3f3;
+}
+
+.menu-links a:hover {
+    color: #1a1a1a;
+    transition-duration: 0.5s;
+    border-bottom: 1px solid #333333;
+}
+
+.brand-icn {
+    width: 50px;
+    margin: 10px;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+img {
+    max-width: 100%;
+}
+/*-------------------------*/
+
+@media screen and (max-width: 850px) {
+    .navbar {
+        flex-direction: column;
+        height: 84px;
+        transition: 1.2s all ease;
+    }
+
+    .mobile-menu {
+        display: flex;
+        justify-content: space-between;
+        z-index: 100;
+    }
+
+    .menu-links {
+        flex-direction: column;
+        text-align: center;
+        transition: 1.2s all ease;
+        transform: translateY(-600px);
+        z-index: 99;
+    }
+
+    .stock-actions, .user-actions {
+        flex-direction: column;
+    }
+
+    .menu-btn {
+        margin: 30px 15px;
+        cursor: pointer;
+    }
+
+    .menu-btn .bar {
+        display: block;
+        width: 25px;
+        height: 3px;
+        margin: 5px auto;
+        background-color: #333333;
+        transition: 0.7s all ease;
+    }
+
+    /* Following css is for creating the dropdown animation. */
+
+    /* Vertical animation */
+    .active.navbar {
+        height: 570px;
+    }
+
+    .active.menu-links {
+        transform: translateY(0px);
+    }
+
+    /*Autistic close button*/
+    .active.menu-btn .bar:nth-child(2) {
+        opacity: 0;
+    }
+
+    .active.menu-btn .bar:nth-child(1) {
+        transform: translateY(8px) rotate(-45deg);
+    }
+
+    .active.menu-btn .bar:nth-child(3) {
+        transform: translateY(-8px) rotate(45deg);
+    }
+    /*Autistic close button*/
+}

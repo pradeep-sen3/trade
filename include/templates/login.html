@@ -1,0 +1,61 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+login
+{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/forms.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/color_scheme.css') }}">
+{% endblock %}
+
+{% block body %}
+<form method="post" action="">
+  <!-- This line is adding something called 'cross site request forgery token' -->
+  {{ form.hidden_tag() }} 
+
+  <div class="total-center">
+    <div class="fields">
+      <h1 class="header gen-txt">Log In</h1>
+      <!-- Input field for email -->
+      <div class="field">
+        <p class="gen-txt">Email</p>
+        <div class="input">
+          <div class="input-icn total-center">
+            <img src="{{ url_for('static', filename='/assets/3669350_email_ic_icon.svg') }}" alt="">
+          </div>
+          {% if form.email.errors %}
+            {{ form.email(placeholder ='email...', class='is-invalid') }}
+          {% else %}
+            {{ form.email(placeholder ='email...') }}
+          {% endif %}
+        </div>
+      </div>
+
+      <!-- Input field for password -->
+      <div class="field">
+        <p class="gen-txt">Password</p>
+        <div class="input">
+          <div class="input-icn total-center">
+            <img src="{{ url_for('static', filename='/assets/icons8-password-16.png') }}" alt="">
+          </div>
+          {% if form.password.errors %}
+            {{ form.password(placeholder ='password', class = 'is-invalid') }}
+          {% else %}
+            {{ form.password(placeholder ='password') }}
+          {% endif %}
+        </div>
+      </div>
+
+      {{ form.submit(class = 'submit-btn right info info-border info-txt info-highlight') }}
+
+      <div class="check-box">
+        {{ form.remember() }}
+        {{ form.remember.label(class="form-check-label") }}
+      </div>
+    </div>
+
+  </div>
+
+</form>
+{% endblock %}

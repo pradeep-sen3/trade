@@ -1,0 +1,73 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+history
+{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/forms.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/color_scheme.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/flex_container.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/recon.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/table.css') }}">
+
+{% endblock %}
+
+{% block body %}
+  <div class="flex-container">
+    <div class="sidebar">
+        
+      <div class="field">
+        <p class="gen-txt">Filter by symbol</p>
+        <div class="input">
+          <div class="input-icn total-center">
+            <img src="{{ url_for('static', filename='/assets/icons8-stock-share-96.png') }}" alt="">
+          </div>
+          <input id="symbol" type="text" placeholder="SYMBOL" autocomplete = "off" name="symbol">
+        </div>
+      </div>
+
+      <div class="field">
+        <p class="gen-txt">Sort by</p>
+        <div class="input">
+          <div class="input-icn total-center">
+            <img src="{{ url_for('static', filename='/assets/icons8-information-96.png') }}" alt="">
+          </div>
+          <select name="view" id="sort">
+            {% for view in views %}
+              <option value="{{ view }}">{{ view }}</option>
+            {% endfor %}
+          </select>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="information">
+      <h3 id="stock-header">Transaction history:</h3>
+      <div class="transactions">
+        <table id="transaction-tab">
+          <tr>
+            <th>Logo</th>
+            <th>Symbol</th>
+            <th>Shares</th>
+            <th>Price</th>
+            <th>Date/Time</th>
+          </tr>
+          {% for transaction in transactions %} 
+            <tr>
+              <td><img class="small-logo" src="{{ transaction.logo }}" alt=""></td>
+              <td>{{ transaction.stock_id }}</td>
+              <td>{{ transaction.shares }}</td>
+              <td>{{ transaction.price }}</td>
+              <td>{{ transaction.transacted }}</td>
+            </tr>
+          {% endfor %}   
+        </table>
+      </div>
+
+    </div>
+  </div>
+
+<script src="{{ url_for('static', filename='/scripts/hist_search.js') }}"></script>
+{% endblock %}

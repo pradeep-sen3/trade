@@ -1,0 +1,121 @@
+<!-- This html file will be inherited by all templates. -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- https://favicon.io/emoji-favicons/money-bag/ -->
+  <link href="{{ url_for('static', filename='/assets/favicon.ico') }}" rel="icon">
+
+  <title>{% block title %}{% endblock %}</title>
+
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/layout.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/flash.css') }}">
+
+  {% block head %}{% endblock %}
+
+</head>
+<body>
+  <nav class="navbar">
+
+    <!-- This div contains the logo and the menu button -->
+    <div class="mobile-menu">
+      <div id="logo">
+        <div class="brand-icn">
+          <img src="{{ url_for('static', filename='/assets/icons8-stock-64.png') }}" alt="">
+        </div>
+        <div class="company-name">
+          <h1>Stocks</h1>
+        </div>
+      </div>
+      <div class="menu-btn">
+        <span class="bar"></span>
+        <span class="bar"></span>
+        <span class="bar"></span>
+      </div>
+    </div>
+
+    <div class="menu-links">
+      <!-- Options available to the user when logged in. -->
+      {% if current_user.is_authenticated %}
+        <div class="stock-actions">
+          <div class="link">
+            <a href="{{ url_for('quote') }}">Quote</a>
+          </div>
+          <div class="link">
+            <a href="{{ url_for('portfolio') }}">Portfolio</a>
+          </div>
+          <div class="link">
+            <a href="{{ url_for('history') }}">History</a>
+          </div>
+          <div class="link">
+            <a href="{{ url_for('available_stocks') }}">Available Stocks</a>
+          </div>
+        </div>
+
+        <div class="user-actions">
+          <div class="link">
+            <a href="{{ url_for('profile') }}">Profile</a>
+          </div>
+          <div class="link">
+            <a href="{{ url_for('logout') }}">Log Out</a>
+          </div>
+        </div>
+      {% else %}
+      <!-- Options available to the user when logged out. -->
+        <div class="stock-actions">
+          <div class="link">
+            <a href="{{ url_for('about') }}">About</a>
+          </div>
+          <div class="link">
+            <a href="https://github.com/Ritesh7766/Trading-Web-Application">Repository</a>
+          </div>
+          <div class="link">
+            <a href="https://facebook.github.io/prophet/">Prophet</a>
+          </div>
+          <div class="link">
+            <a href="https://iexcloud.io/">IEX</a>
+          </div>
+        </div>
+
+        <div class="user-actions">
+          <div class="link">
+            <a href="{{ url_for('register') }}">Register</a>
+          </div>
+          <div class="link">
+            <a href="{{ url_for('login') }}">Log in</a>
+          </div>
+        </div>
+      {% endif %}
+    </div>
+
+  </nav>
+
+  <div class="seperator"></div>
+
+  <!-- Flash messages -->
+  {% with messages= get_flashed_messages(with_categories = True) %}
+    {% if messages %}
+      {% for category, message in messages %}
+      <div class="alert alert-{{ category }}">
+        <button class="close close-{{ category }}">
+          <span class="icon">&times;</span>
+        </button>
+        {{ message }}
+      </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+  
+
+  {% block body %}
+  {% endblock %}
+
+  <div class="seperator"></div>
+</body>
+<script src="{{ url_for('static', filename='/scripts/dropdown.js') }}"></script>
+<script src="{{ url_for('static', filename='/scripts/alert.js') }}"></script>
+</html>

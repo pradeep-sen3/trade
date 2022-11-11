@@ -1,0 +1,81 @@
+/*
+Perfectly center a div.
+*/
+.total-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/*
+Following lines of css is used for styling the input field.
+*/
+.field input, .field select {
+    padding: 15px 35px;
+    border-radius: 10px;
+    padding-left: 40px;
+    width: 100%;
+    border: 1px solid rgb(99, 96, 96);
+}
+
+.input {
+    display: flex;
+    position: relative;
+}
+
+.input-icn {
+    width: 25px;
+    position: absolute;
+    height: 100%;
+    left: 10px;
+}
+
+.input-icn img {
+    max-width: 100%;
+}
+/*------------------------------------------------*/
+
+/* 
+Adding styles to the submit button
+*/
+
+.submit-btn {
+    padding: 15px 10px;
+    border-radius: 10px;
+    margin: 10px 10px;
+    min-width: 70px;
+}
+
+.right {
+    float: right;
+}
+
+.no-margin {
+    margin: 0;
+}
+
+/* 
+Adding space in between fields 
+*/
+.fields {
+    margin-top: 40px;
+    background-color: #fafafa;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px 5px #d7d7d7;
+}
+
+.field {
+    margin: 20px 10px;
+}
+
+.header {
+    margin: 20px 10px;
+}
+
+.check-box {
+    margin: 20px 10px;
+}
+
+.form-check-label {
+    color: #676767;
+}

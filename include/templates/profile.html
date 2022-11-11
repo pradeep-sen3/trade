@@ -1,0 +1,198 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+profile
+{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/forms.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/color_scheme.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/flex_container.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/recon.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/profile.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/table.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/chart.css') }}">
+{% endblock %}
+
+{% block body %}
+<div class="flex-container">
+  <div class="profile-scroll sidebar">
+
+    <div class="profile">
+      <div class="pic">
+        <img src="{{ url_for('static', filename='/assets/default.jpg') }}" alt="">
+      </div>
+      <div class="flex-box">
+        <div class="icon">
+          <img src="{{ url_for('static', filename='/assets/mail.png') }}" alt="">
+        </div>
+        <p class="small-text marg8">riteshsaha214@gmail.com</p>
+      </div>
+      <div class="flex-box">
+        <div class="icon">
+          <img src="{{ url_for('static', filename='/assets/money.png') }}" alt="">
+        </div>
+        <p class="small-text marg8">${{ current_user.cash }}</p>
+      </div>
+    </div>
+    
+    <!-- Allows user to look up a stock by its symbol -->
+    <div class="field">
+      <p class="gen-txt">Search by symbol</p>
+      <div class="input">
+        <div class="input-icn total-center">
+          <img src="{{ url_for('static', filename='/assets/icons8-search.svg') }}" alt="">
+        </div>
+        <input id="symbol" type="text" placeholder="symbol" autocomplete = "off" name="id">
+      </div>
+    </div>
+
+    <!-- Allows a user to look up a stock by its name -->
+    <div class="field">
+      <p class="gen-txt">Search by Name</p>
+      <div class="input">
+        <div class="input-icn total-center">
+          <img src="{{ url_for('static', filename='/assets/icons8-search-in-list-96.png') }}" alt="">
+        </div>
+        <input id="name" type="text" placeholder="name" autocomplete = "off" name="nm">
+      </div>
+    </div>
+
+    <div class="stocks-owned">
+      <h4 id="stock-header">My Watchlist:</h4>
+      <table id="ownership">
+        <tr>
+          <th>Logo</th>
+          <th>Symbol</th>
+          <th>Shares</th>
+        </tr>
+      {% for stock in stocks %} 
+        <tr class="trigger">
+          <td><img class="small-logo" src="{{ stock.logo }}" alt=""></td>
+          <td>{{ stock.symbol }}</td>
+          <td>{{ stock.shares }}</td>
+        </tr>
+      {% endfor %}   
+      </table>
+    </div>
+    
+  </div>
+
+  <div class="information" id="table2">
+
+    <!-- Display all stocks owned by the user along with their current price -->
+    <h3 id="stock-header">Current status of your shares:</h3>
+    <div class="shares">
+      <table id="my-shares">
+        <tr>
+          <th>Logo</th>
+          <th>Symbol</th>
+          <th>Shares</th>
+          <th>Current Price</th>
+          <th>Total</th>
+        </tr>
+        {% for stock in stocks %} 
+          <tr>
+            <td><img class="small-logo" src="{{ stock.logo }}" alt=""></td>
+            <td>{{ stock.symbol }}</td>
+            <td>{{ stock.shares }}</td>
+            <td>{{ stock.price }}</td>
+            <td>{{ stock.total }}</td>
+          </tr>
+        {% endfor %}   
+      </table>
+    </div>
+
+    <!-- 200MA 100MA -->
+    <div class="plots">
+      <h3 id="stock-header" class="mtop30">100 day MA vs 200 day MA:</h3>
+      <div class="flex-cont">
+
+        <div class="field">
+          <p class="gen-txt">Stock</p>
+          <div class="input">
+            <div class="input-icn total-center">
+              <img src="{{ url_for('static', filename='/assets/plot2.png') }}" alt="">
+            </div>
+            <select name="share" id="share">
+              {% for symbol in symbols %}
+                <option value="{{ symbol }}">{{ symbol }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <p class="gen-txt">Period</p>
+          <div class="input">
+            <div class="input-icn total-center">
+              <img src="{{ url_for('static', filename='/assets/clock.png') }}" alt="">
+            </div>
+            <select name="period" id="period">
+              {% for period in periods %}
+                <option value="{{ period }}">{{ period }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="chart">
+        <iframe id="specific-plot" width="100%" height="500px" frameborder="0"></iframe>
+      </div>
+
+    </div>
+
+    <!-- Predictions -->
+    <div class="plots">
+      <h3 id="stock-header" class="mtop30">Trend Predictions:</h3>
+      <div class="flex-cont">
+
+        <div class="field">
+          <p class="gen-txt">Stock</p>
+          <div class="input">
+            <div class="input-icn total-center">
+              <img src="{{ url_for('static', filename='/assets/plot2.png') }}" alt="">
+            </div>
+            <select name="share2" id="share2">
+              {% for symbol in symbols %}
+                <option value="{{ symbol }}">{{ symbol }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <p class="gen-txt">Period</p>
+          <div class="input">
+            <div class="input-icn total-center">
+              <img src="{{ url_for('static', filename='/assets/clock.png') }}" alt="">
+            </div>
+            <select name="period2" id="period2">
+              {% for period in periods %}
+                <option value="{{ period }}">{{ period }}</option>
+              {% endfor %}
+            </select>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="chart">
+        <iframe id="specific-plot2" width="100%" height="500px" frameborder="0"></iframe>
+      </div>
+
+    </div>
+
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='/scripts/ownership_search.js') }}"></script>
+<script src="{{ url_for('static', filename='/scripts/plot_ma.js') }}"></script>
+<script src="{{ url_for('static', filename='/scripts/plot_pred.js') }}"></script>
+ <script>
+    plot('{{ symbols[0] }}', '5y');
+    plot_pred('{{ symbols[0] }}', '1y', document.getElementById('share2') );
+ </script>
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+quote
+{% endblock %}
+
+{% block head %}
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/forms.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/table.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/flex_container.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='/styles/color_scheme.css') }}">
+{% endblock %}
+
+{% block body %}
+<div id="stock-data" class="flex-container">
+  <div class="sidebar">
+    
+      <!-- Allows user to look up a stock by its symbol -->
+      <div class="field">
+        <p class="gen-txt">Search by Symbol</p>
+        <div class="input">
+          <div class="input-icn total-center">
+            <img src="{{ url_for('static', filename='/assets/icons8-search.svg') }}" alt="">
+          </div>
+          <input id="symbol" type="text" placeholder="symbol" autocomplete = "off" name="id">
+        </div>
+      </div>
+
+      <!-- Allows a user to look up a stock by its name -->
+      <div class="field">
+        <p class="gen-txt">Search by Name</p>
+        <div class="input">
+          <div class="input-icn total-center">
+            <img src="{{ url_for('static', filename='/assets/icons8-search-in-list-96.png') }}" alt="">
+          </div>
+          <input id="name" type="text" placeholder="name" autocomplete = "off" name="nm">
+        </div>
+      </div>
+  
+  </div>
+
+  <!-- Display a list of stocks which match the search value -->
+  <div id="table" class="secondary">
+    <!-- The table is created using AJAX -->
+    <table>
+      
+    </table>
+  </div>
+</div>
+
+<script src="{{ url_for('static', filename='/scripts/search.js') }}"></script>
+{% endblock %}

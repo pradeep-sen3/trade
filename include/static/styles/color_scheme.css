@@ -1,0 +1,107 @@
+.info {
+   background-color: rgb(218, 218, 255);
+}
+
+.info-border {
+    border: 1px solid rgb(106, 106, 255);
+}
+
+.info-txt {
+    color: rgb(106, 106, 255);
+}
+
+.info-highlight:hover {
+    background-color: rgb(5, 5, 165);
+    color: white;
+    transition-duration: 0.4s;
+} 
+
+
+.success {
+   background-color: #d0ffa0;
+}
+
+.success-border {
+    border: 1px solid #1db801;
+}
+
+.success-txt {
+    color: #6ec716;
+}
+
+.success-highlight:hover {
+    background-color: #62c400;
+    color: white;
+    transition-duration: 0.4s;
+} 
+
+
+.danger {
+    background-color: #ffd3d3;
+ }
+ 
+ .danger-border {
+     border: 1px solid #c73636;
+ }
+ 
+ .danger-txt {
+     color: #c73636;
+ }
+ 
+ .danger-highlight:hover {
+     background-color: #c73636;
+     color: white;
+     transition-duration: 0.4s;
+ } 
+
+/*---------------------------------------*/
+
+.gen {
+    background-color: #f7f7f7;
+ }
+ 
+ .gen-border {
+    border: 1px solid #646464;
+ }
+ 
+ .gen-txt {
+    color: #646464;
+ }
+ 
+ .gen-highlight:hover {
+    background-color: #646464;
+    color: white;
+    transition-duration: 0.4s;
+ } 
+
+ #buy {
+     width: 57px;
+ }
+
+ .high {
+     color: rgb(1, 199, 1);
+ }
+
+ .low {
+     color: red;
+ }
+
+.icon {
+    width: 35px;
+}
+
+.icon img {
+    max-width: 100%;
+}
+
+ .small-text {
+     font-size: 9pxpx;
+ }
+
+ .flex-box {
+    display: flex;
+ }
+
+ .marg8 {
+     margin: 8px;
+ }

@@ -1,0 +1,117 @@
+/*
+Styles common to all tables.
+*/
+
+#table {
+    margin-left: 250px;
+}
+
+#table2 {
+    margin-left: 280px;
+}
+
+table {
+    border-collapse: collapse;
+    border: 1px solid #bdc3c7;
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    width: 100%;
+}
+
+tr {
+    transition: all 0.2s ease-in;
+    cursor: pointer;
+    height: 68px;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+tr:nth-child(2n) {
+    background-color: #fafafa;
+}
+
+tr:nth-child(1) {
+    background-color: #4c5151;
+    width: 100%;
+}
+
+tr:nth-child(n + 2):hover {
+    transform: scale(1.025);
+    box-shadow: 2px 2px 12px rgba(0, 0, 0, 0.2), -1px -1px 8px rgba(0, 0, 0, 0.2);
+    background-color: #efeeff;
+}
+
+th {
+    color: #fff;
+}
+
+table button {
+    width: 50px;
+    padding: 5px;
+    border-radius: 5px;
+    margin: 5px;
+}
+
+.btns {
+    display: flex;
+    justify-content: center;
+}
+
+.stocks-owned {
+    margin-top: 40px;
+    margin-bottom: 120px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.small-logo {
+    width: 40px;
+}
+
+#stock-header {
+    margin-bottom: 10px;
+}
+
+#header {
+    height: 40px;
+}
+
+tr:nth-child(1) {
+    height: 40px;
+}
+
+
+@media screen and (max-width: 360px) {
+    #transaction-tab * {
+        font-size: 0.85em;
+    }
+}
+
+@media screen and (max-width: 420px) {
+    #transaction-tab * {
+        font-size: 0.9em;
+    }
+}
+
+
+@media screen and (max-width: 670px) {
+    .btns {
+        flex-direction: column;
+    }
+
+    #table2 {
+        margin: 30px;
+    }
+
+    #table {
+        margin: 30px;
+    }
+
+    .stocks-owned {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}

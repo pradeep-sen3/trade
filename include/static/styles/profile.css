@@ -1,0 +1,24 @@
+.pic {
+    width: 150px;
+}
+
+.pic img {
+    max-width: 100%;
+    border-radius: 10px;
+}
+
+.icon img {
+    max-width: 100%;
+}
+
+.profile {
+    margin: 20px;
+}
+
+.profile-scroll {
+    overflow: scroll;
+}
+
+.mtop30 {
+    margin-top: 30px;
+}
